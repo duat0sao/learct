@@ -1,0 +1,7 @@
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.csproj.AssemblyReference.cache
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.Form1.resources
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.csproj.GenerateResource.cache
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.GeneratedMSBuildEditorConfig.editorconfig
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.AssemblyInfoInputs.cache
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.AssemblyInfo.cs
+N:\BTL--Big\learnCT\SMS\SMS\SMS\obj\Debug\net6.0-windows\SMS.csproj.CoreCompileInputs.cache

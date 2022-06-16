@@ -1,0 +1,15 @@
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.csproj.AssemblyReference.cache
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.GeneratedMSBuildEditorConfig.editorconfig
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.AssemblyInfoInputs.cache
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.AssemblyInfo.cs
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.csproj.CoreCompileInputs.cache
+N:\BTL--Big\learnCT\drive\bin\Debug\net6.0\drive.exe
+N:\BTL--Big\learnCT\drive\bin\Debug\net6.0\drive.deps.json
+N:\BTL--Big\learnCT\drive\bin\Debug\net6.0\drive.runtimeconfig.json
+N:\BTL--Big\learnCT\drive\bin\Debug\net6.0\drive.dll
+N:\BTL--Big\learnCT\drive\bin\Debug\net6.0\drive.pdb
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.dll
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\refint\drive.dll
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.pdb
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\drive.genruntimeconfig.cache
+N:\BTL--Big\learnCT\drive\obj\Debug\net6.0\ref\drive.dll
