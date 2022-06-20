@@ -19,39 +19,9 @@ namespace SMSnew
 
         private static ManualResetEvent manualResetEvent = new ManualResetEvent(false);
 
-        static void MethodA()
-        {
-            for (int i = 0; i < 100; i++) Console.Write("A");
-        }
-
 
         static SerialPort sp = new SerialPort();
 
-        public async static Task Task1()
-        {
-            Task t1 = new Task(
-                () =>
-                {
-                    sp.PortName = "COM9";
-                    sp.DataBits = 8;
-                    sp.Parity = Parity.None;
-                    sp.StopBits = StopBits.One;
-                    sp.BaudRate = 115200;
-
-                    sp.DataReceived += Sp_DataReceived;
-
-                    sp.Open();
-
-                    sp.Write("AT+CGMM" + Environment.NewLine);      //tên thiết bị
-                    Thread.Sleep(100);
-                    manualResetEvent.WaitOne();
-                    Console.WriteLine("Da xong");
-                });
-            t1.Start();
-            await t1;
-
-
-        }
         
 
         static void Main(string[] args)
@@ -100,7 +70,8 @@ namespace SMSnew
                 Thread.Sleep(1000);
                 manualResetEvent.Set();
             }
-            //Thread.Sleep(10000);
+
+            Thread.Sleep(10000);
             
             //sp.WriteLine("AT+CMGP=1" + Environment.NewLine);    //chuyen(mở) che do gui tin nhan,
             //Thread.Sleep(100);
