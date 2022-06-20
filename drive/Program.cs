@@ -38,7 +38,7 @@ namespace drive
             //nghi ngoi 1 chut
             Dosomething(1000);
 
-            sp.PortName = "COM";
+            sp.PortName = "COM11";
 
             sp.Open();
             sp.WriteLine("AT" + Environment.NewLine);    //lệnh AT dùng để sử dụng điều khiển modem
