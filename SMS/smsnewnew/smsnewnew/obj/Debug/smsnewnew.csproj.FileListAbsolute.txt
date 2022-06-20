@@ -1,0 +1,8 @@
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\bin\Debug\smsnewnew.exe.config
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\bin\Debug\smsnewnew.exe
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\bin\Debug\smsnewnew.pdb
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\obj\Debug\smsnewnew.csproj.AssemblyReference.cache
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\obj\Debug\smsnewnew.csproj.SuggestedBindingRedirects.cache
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\obj\Debug\smsnewnew.csproj.CoreCompileInputs.cache
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\obj\Debug\smsnewnew.exe
+N:\BTL--Big\learnCT\SMS\smsnewnew\smsnewnew\obj\Debug\smsnewnew.pdb

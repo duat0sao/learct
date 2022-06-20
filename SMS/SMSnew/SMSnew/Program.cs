@@ -22,6 +22,7 @@ namespace SMSnew
 
         static SerialPort sp = new SerialPort();
 
+        static string ndl;
         
 
         static void Main(string[] args)
@@ -58,20 +59,24 @@ namespace SMSnew
             //sp.Write("AT+CGMR"+Environment.NewLine);
             //Thread.Sleep(1000);
             //Console.ReadKey();
-            sp.Write("AT+CGMM" + Environment.NewLine);      //tên thiết bị
+            sp.Write("AT+CGMI" + Environment.NewLine);      //tên thiết bị
             Thread.Sleep(1000);
 
             //t1.Start();
 
             //string noidung = sp.ReadExisting();
 
-            while (true)
-            {
-                Thread.Sleep(1000);
-                manualResetEvent.Set();
-            }
+            
+            
+            
+            manualResetEvent.WaitOne();
 
-            Thread.Sleep(10000);
+            
+
+            Console.WriteLine(ndl);
+
+
+            //Thread.Sleep(1000);
             
             //sp.WriteLine("AT+CMGP=1" + Environment.NewLine);    //chuyen(mở) che do gui tin nhan,
             //Thread.Sleep(100);
@@ -100,7 +105,7 @@ namespace SMSnew
 
         }
 
-        private async static void Sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private static void Sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             SerialPort sp = (SerialPort)sender; 
             string noidung = sp.ReadExisting();
@@ -121,16 +126,16 @@ namespace SMSnew
 
                     foreach(string s in newText)
                     {
-                        if ((s != "AT+CGMM") && (s!="OK"))
+                        if ((s != "AT+CGMI") && (s!="OK"))
                             Console.WriteLine(s);
+                            ndl = s;
                     } 
                 });
-            while (true)
-            {
-                manualResetEvent.WaitOne();
-                t1.Start();
-                manualResetEvent.Reset();
-            }
+            
+            manualResetEvent.Set();
+            t1.Start();
+            
+            
             
            
 
