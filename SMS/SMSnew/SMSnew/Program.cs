@@ -22,7 +22,7 @@ namespace SMSnew
 
         static SerialPort sp = new SerialPort();
 
-        static string ndl;
+        static string ndl { get; set; }
         
 
         static void Main(string[] args)
@@ -60,32 +60,34 @@ namespace SMSnew
             //Thread.Sleep(1000);
             //Console.ReadKey();
             sp.Write("AT+CGMI" + Environment.NewLine);      //tên thiết bị
-            Thread.Sleep(1000);
+
 
             //t1.Start();
 
             //string noidung = sp.ReadExisting();
 
+            Thread.Sleep(100);
             
-            
-            
+
             manualResetEvent.WaitOne();
 
             
+            Console.WriteLine("sau khi nghi" + ndl);
 
-            Console.WriteLine(ndl);
 
+            Thread.Sleep(1000);
 
-            //Thread.Sleep(1000);
-            
+            //sp.WriteLine("AT" + Environment.NewLine);    //lệnh AT dùng để sử dụng điều khiển modem
+            //Thread.Sleep(100);
+            //
             //sp.WriteLine("AT+CMGP=1" + Environment.NewLine);    //chuyen(mở) che do gui tin nhan,
             //Thread.Sleep(100);
             //
             //sp.WriteLine("AT+CSCS=\"GSM\"" + Environment.NewLine);    //Chọn bộ ký tự của thiết bị AT+CSCS, GSM bảng chữ cái mặc định
             //Thread.Sleep(100);
-            //sp.WriteLine("AT+CMGS=\"" + sdt + "\"" + Environment.NewLine);    //AT+CMGS đc sử dụng để gửi tin nhắn
+            //sp.WriteLine("AT+CMGS=\"" + "" + "\"" + Environment.NewLine);    //AT+CMGS đc sử dụng để gửi tin nhắn
             //Thread.Sleep(100);
-            //sp.WriteLine(contenGD + Environment.NewLine);
+            //sp.WriteLine(" " + Environment.NewLine);
             //Thread.Sleep(100);
             //sp.Write(new byte[] { 26 }, 0, 1);
             //Thread.Sleep(100);
@@ -99,6 +101,7 @@ namespace SMSnew
             //{
             //    Console.WriteLine("SMS da gui thanh cong");
             //}
+            Thread.Sleep(10000);
             //sp.Close();
 
             //Task t1 = Task1();
@@ -116,28 +119,35 @@ namespace SMSnew
             //
             //foreach(string s in newText)
             //{
-            //    if ((s != "AT+CGMM") && (s!="OK"))
-            //        Console.WriteLine(s);
-            //}    
+            //    if ((s != "AT+CGMI") && (s!="OK"))
+            //        //Console.WriteLine(s);
+            //        ndl += " " + s;
+            //}
+            //Console.WriteLine("trc "+ndl);
+            
+
             Task t1 = new Task(
                 () =>
                 {
                     string[] newText = Regex.Split(noidung, @"\s+");
-
+            
                     foreach(string s in newText)
                     {
                         if ((s != "AT+CGMI") && (s!="OK"))
-                            Console.WriteLine(s);
-                            ndl = s;
-                    } 
+                            //Console.WriteLine(s);
+                            ndl += " " + s;
+                    }
+                    Console.WriteLine("o phan bat su kien "+ndl);
+                    manualResetEvent.Set();
                 });
             
-            manualResetEvent.Set();
+            
             t1.Start();
-            
-            
-            
-           
+            //manualResetEvent.Set();
+
+
+
+
 
 
 
