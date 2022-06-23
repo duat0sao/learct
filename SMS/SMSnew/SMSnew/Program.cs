@@ -23,7 +23,7 @@ namespace SMSnew
         static SerialPort sp = new SerialPort();
 
         static string ndl { get; set; }
-        
+
 
         static void Main(string[] args)
         {
@@ -37,29 +37,29 @@ namespace SMSnew
             //
             //Console.WriteLine("Sdt: " + sdt);
             //Console.WriteLine("Noi dung: " + contenGD);
-            
+
             //nghi ngoi 1 chut
             //Thread.Sleep(100);
-            
-            sp.PortName = "COM9";
+
+            sp.PortName = "COM21";
             sp.DataBits = 8;
             sp.Parity = Parity.None;
             sp.StopBits = StopBits.One;
             sp.BaudRate = 115200;
-            
-            sp.DataReceived += Sp_DataReceived;
+
+            //sp.DataReceived += Sp_DataReceived;
             
             sp.Open();
-            
+
             //Console.ReadKey();
 
             //sp.WriteLine("AT" + Environment.NewLine);    //lệnh AT dùng để sử dụng điều khiển modem
             //Thread.Sleep(100);
-            
+
             //sp.Write("AT+CGMR"+Environment.NewLine);
             //Thread.Sleep(1000);
             //Console.ReadKey();
-            sp.Write("AT+CGMI" + Environment.NewLine);      //tên thiết bị
+            //sp.Write("AT+CGMI" + Environment.NewLine);      //tên thiết bị
 
 
             //t1.Start();
@@ -67,32 +67,32 @@ namespace SMSnew
             //string noidung = sp.ReadExisting();
 
             Thread.Sleep(100);
-            
 
-            manualResetEvent.WaitOne();
 
-            
-            Console.WriteLine("sau khi nghi" + ndl);
+            //manualResetEvent.WaitOne();
+
+
+            //Console.WriteLine("sau khi nghi" + ndl);
 
 
             Thread.Sleep(1000);
-
-            //sp.WriteLine("AT" + Environment.NewLine);    //lệnh AT dùng để sử dụng điều khiển modem
-            //Thread.Sleep(100);
-            //
-            //sp.WriteLine("AT+CMGP=1" + Environment.NewLine);    //chuyen(mở) che do gui tin nhan,
-            //Thread.Sleep(100);
-            //
-            //sp.WriteLine("AT+CSCS=\"GSM\"" + Environment.NewLine);    //Chọn bộ ký tự của thiết bị AT+CSCS, GSM bảng chữ cái mặc định
-            //Thread.Sleep(100);
-            //sp.WriteLine("AT+CMGS=\"" + "" + "\"" + Environment.NewLine);    //AT+CMGS đc sử dụng để gửi tin nhắn
-            //Thread.Sleep(100);
-            //sp.WriteLine(" " + Environment.NewLine);
-            //Thread.Sleep(100);
-            //sp.Write(new byte[] { 26 }, 0, 1);
-            //Thread.Sleep(100);
+            
+            sp.WriteLine("AT" + Environment.NewLine);    //lệnh AT dùng để sử dụng điều khiển modem
+            Thread.Sleep(100);
+            
+            sp.WriteLine("AT+CMGF=1" + Environment.NewLine);    //chuyen(mở) che do gui tin nhan,
+            Thread.Sleep(100);
+            
+            sp.WriteLine("AT+CSCS=\"GSM\"" + Environment.NewLine);    //Chọn bộ ký tự của thiết bị AT+CSCS, GSM bảng chữ cái mặc định
+            Thread.Sleep(100);
+            sp.WriteLine("AT+CMGS=\"" + "+84396192800" + "\"" + Environment.NewLine);    //AT+CMGS đc sử dụng để gửi tin nhắn
+            Thread.Sleep(100);
+            sp.WriteLine("gg" + Environment.NewLine);
+            Thread.Sleep(100);
+            sp.Write(new byte[] { 26 }, 0, 1);
+            Thread.Sleep(100);
             //var response = sp.ReadExisting();
-            //
+            
             //if (response.Contains("ERROR"))
             //{
             //    Console.WriteLine("SMS that bai roi");
@@ -110,7 +110,7 @@ namespace SMSnew
 
         private static void Sp_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            SerialPort sp = (SerialPort)sender; 
+            SerialPort sp = (SerialPort)sender;
             string noidung = sp.ReadExisting();
             //Console.WriteLine($"noi dung {noidung}");
 
@@ -123,32 +123,27 @@ namespace SMSnew
             //        //Console.WriteLine(s);
             //        ndl += " " + s;
             //}
-            //Console.WriteLine("trc "+ndl);
-            
+            //Console.WriteLine(ndl);
+
 
             Task t1 = new Task(
                 () =>
                 {
                     string[] newText = Regex.Split(noidung, @"\s+");
             
-                    foreach(string s in newText)
+                    foreach (string s in newText)
                     {
-                        if ((s != "AT+CGMI") && (s!="OK"))
+                        if ((s != "AT+CGMI") && (s != "OK"))
                             //Console.WriteLine(s);
                             ndl += " " + s;
                     }
-                    Console.WriteLine("o phan bat su kien "+ndl);
+                    Console.WriteLine("o phan bat su kien " + ndl);
                     manualResetEvent.Set();
                 });
             
             
             t1.Start();
-            //manualResetEvent.Set();
-
-
-
-
-
+            manualResetEvent.Set();
 
 
         }
