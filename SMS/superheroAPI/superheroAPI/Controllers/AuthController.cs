@@ -129,7 +129,8 @@ namespace superheroAPI.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Username),
-                //Role admin cho người tạo,
+
+                //Role admin cho người tạo mới,
                 new Claim(ClaimTypes.Role, "Admin")
             };
 
